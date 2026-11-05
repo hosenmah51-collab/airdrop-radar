@@ -39,8 +39,14 @@ jobs:
           from html.parser import HTMLParser
           class Check(HTMLParser):
               pass
-          Check().feed(Path("index.html").read_text(encoding="utf-8"))
-          print("HTML parsed")
+          html = Path("index.html").read_text(encoding="utf-8")
+          Check().feed(html)
+          script = html.split("<script>", 1)[1].split("</script>", 1)[0]
+          Path("/tmp/airdrop-radar.js").write_text(script, encoding="utf-8")
+          print("HTML parsed; JavaScript extracted")
+          PY
+          node --check /tmp/airdrop-radar.js
+          #
           PY
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
