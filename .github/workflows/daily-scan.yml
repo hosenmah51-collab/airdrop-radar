@@ -46,8 +46,6 @@ jobs:
           print("HTML parsed; JavaScript extracted")
           PY
           node --check /tmp/airdrop-radar.js
-          #
-          PY
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
