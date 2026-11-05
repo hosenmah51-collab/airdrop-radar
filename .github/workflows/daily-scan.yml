@@ -43,6 +43,7 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add data/opportunities.json data/discovery-candidates.json
             git commit -m "chore: refresh discovery candidates and timestamps"
+            git pull --rebase origin main
             git push
           fi
       - name: Upload site
