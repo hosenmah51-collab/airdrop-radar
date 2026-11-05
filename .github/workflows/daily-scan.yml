@@ -8,6 +8,7 @@ on:
       - 'data/**'
       - '.github/workflows/**'
       - 'scanner.py'
+      - 'discover.py'
   workflow_dispatch:
   schedule:
     - cron: "15 5 * * *"
@@ -31,15 +32,17 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Discover Telegram game candidates
+        run: python discover.py
       - name: Validate curated catalogue
         run: python scanner.py
-      - name: Commit updated timestamp
+      - name: Commit refreshed catalogue metadata
         run: |
-          if [[ -n "$(git status --porcelain data/opportunities.json)" ]]; then
+          if [[ -n "$(git status --porcelain data/opportunities.json data/discovery-candidates.json)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add data/opportunities.json
-            git commit -m "chore: update catalogue validation timestamp"
+            git add data/opportunities.json data/discovery-candidates.json
+            git commit -m "chore: refresh discovery candidates and timestamps"
             git push
           fi
       - name: Upload site
