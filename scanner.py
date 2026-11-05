@@ -11,7 +11,8 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parent
-DATA = ROOT / "data" / "opportunities.json"\nDISCOVERY = ROOT / "data" / "discovery-candidates.json"
+DATA = ROOT / "data" / "opportunities.json"
+DISCOVERY = ROOT / "data" / "discovery-candidates.json"
 ALLOWED_STATUS = {"فعال", "در انتظار", "پایان‌یافته"}
 ALLOWED_CLAIM = {"قابل Claim", "در انتظار", "غیرفعال", "نامشخص"}
 REQUIRED = ("id", "name", "category", "description", "status", "source_url")
