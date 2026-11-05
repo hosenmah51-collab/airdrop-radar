@@ -1,6 +1,13 @@
 name: Daily catalogue check and deploy
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'data/**'
+      - '.github/workflows/**'
+      - 'scanner.py'
   workflow_dispatch:
   schedule:
     - cron: "15 5 * * *"
