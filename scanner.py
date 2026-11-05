@@ -31,7 +31,7 @@ def main():
    x["status"]="پایان‌یافته"; x["claim_status"]="غیرفعال"
   x["checked_at"]=today
  payload["last_updated"]=now.strftime("%Y-%m-%d %H:%M UTC")
- DATA.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+ DATA.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
  if DISCOVERY.exists():
   d=json.loads(DISCOVERY.read_text(encoding="utf-8")); seen=set()
   for i,x in enumerate(d.get("candidates",[]),1):
